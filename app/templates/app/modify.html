@@ -1,0 +1,28 @@
+{% extends "app/template.html" %} 
+{% load static %}
+{% block title %}Modificar usuario{% endblock %}
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <h2>Editar usuario</h2>
+                <hr>
+                <form action="" method="post">
+
+                    {% csrf_token %}
+                    {{form}}
+                    <div class="d-flex justify-context-center">
+                        <input type="reset" value="Cancelar" class="btn btn-secondary">
+                        <input type="submit" value="Editar" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

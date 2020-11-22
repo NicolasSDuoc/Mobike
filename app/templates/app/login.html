@@ -1,0 +1,23 @@
+{% extends "app/template.html" %} 
+{% load static %}
+{% block title %}Login Mobike{% endblock %}
+{% block content %}
+
+
+<div class="container">
+    <div class="card card-container">
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="{% static 'app/img/logomobike.png' %}" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin" action=""  method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" id="" placeholder="usuario">
+            <input type="password" name="password" placeholder="password">
+            <span id="reauth-email" class="reauth-email"></span>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Entrar</button>
+        </form><!-- /form -->
+    </div><!-- /card-container -->
+</div><!-- /container -->
+
+
+{% endblock %}
