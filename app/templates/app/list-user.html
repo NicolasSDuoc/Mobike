@@ -1,41 +1,51 @@
-{% extends "app/template.html" %} 
-{% load static %}
-{% block title %}Mobike{% endblock %}
-{% block content %}
+{% extends "app/template.html" %} {% load static %} {% block title %}Mobike{% endblock %} {% block content %}
+
+<div style="padding: 1% 1%;">
+    <form action="{% url 'list-user-id' %}">
+        <div style=" width: 30%; margin-left: auto; margin-right: auto; padding: 1%; border: 1px solid black;">
+            <select name="select" id="" style="outline: none;">
+              <option value="0" selected>--FILTRAR--</option>
+              <option value="1">ID</option>
+              <option value="2">RUT</option>
+            </select>
+            <input type="text " style="outline: none; border-radius: 1%; " name="input-filter">
+            <button type="submit" class="btn btn-secondary">BUSCAR</button>
+        </div>
+    </form>
+</div>
+<div class="table-responsive " style="width: 95%; margin-left: auto; margin-right: auto; ">
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col ">ID</th>
+                <th scope="col ">RUT</th>
+                <th scope="col ">NOMBRE</th>
+                <th scope="col ">APELLIDO</th>
+                <th scope="col ">CORREO</th>
+                <th scope="col ">TELÉFONO</th>
+                <th scope="col ">CONTRASEÑA</th>
+                <th scope="col ">COMUNA</th>
+                <th scope="col "></th>
+                <th scope="col "></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in usuarios %}
+            <tr>
+                <th scope="row ">{{u.id}}</th>
+                <td>{{u.username}}</td>
+                <td>{{u.first_name}}</td>
+                <td>{{u.last_name}}</td>
+                <td>{{u.email}}</td>
+                <td>{{u.phone}}</td>
+                <td>{{u.password}}</td>
+                <td>{{u.commune}}</td>
+                <td><a href="{% url 'modify-user' u.id %} " class="btn btn-primary ">MODIFICAR</a></td>
+                <td><a href="{% url 'delete-user' u.id %} " class="btn btn-danger ">ELIMINAR</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">RUT</th>
-        <th scope="col">NOMBRE</th>
-        <th scope="col">APELLIDO</th>
-        <th scope="col">CORREO</th>
-        <th scope="col">TELÉFONO</th>
-        <th scope="col">CONTRASEÑA</th>
-        <th scope="col">COMUNA</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for u in usuarios %}
-      <tr>
-        <th scope="row">{{u.id}}</th>
-        <td>{{u.username}}</td>
-        <td>{{u.first_name}}</td>
-        <td>{{u.last_name}}</td>
-        <td>{{u.email}}</td>
-        <td>{{u.phone}}</td>
-        <td>{{u.password}}</td>
-        <td>{{u.commune}}</td>
-        <td><a href="{% url 'modify-user' u.id %}" class="btn btn-primary">MODIFICAR</a></td>
-        <td><a href="{% url 'delete-user' u.id %}" class="btn btn-danger">ELIMINAR</a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-
-{% endblock %}
+    {% endblock %}

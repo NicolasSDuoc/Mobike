@@ -1,11 +1,7 @@
-{% extends "app/template.html" %} 
-{% load static %}
-{% block title %}Modificar usuario{% endblock %}
-{% block content %}
+{% extends "app/template.html" %} {% load static %} {% block title %}Modificar usuario{% endblock %} {% block content %}
 
-<div class="card">
+<div class="card" style="padding-bottom: 10%;">
     <div class="card-body">
-
         <div class="row">
             <div class="col-12 col-md-6 offset-md-3">
                 <h2>Editar usuario</h2>
@@ -13,7 +9,34 @@
                 <form action="" method="post">
 
                     {% csrf_token %}
-                    {{form}}
+                    <div class="form-row">
+                        <div class="form-group col-4">
+                            <label>Rut</label> {{ form.username }}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Contraseña</label> {{ form.password1 }}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Confirme contraseña</label> {{ form.password2 }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label>Nombres</label> {{ form.first_name }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Apellidos</label> {{ form.last_name }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label> {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label>Numero de telefono</label> {{ form.phone }}
+                    </div>
+                    <div class="form-group">
+                        <label>Comuna</label> {{ form.commune }}
+                    </div>
                     <div class="d-flex justify-context-center">
                         <input type="reset" value="Cancelar" class="btn btn-secondary">
                         <input type="submit" value="Editar" class="btn btn-primary">

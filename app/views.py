@@ -37,8 +37,9 @@ def login_user(request):
             if user is not None:
                 do_login(request,user)
                 return redirect('home')
-            else:
-                messages.info(request,'Usuario o contraseña incorrecta')
+            
+            if user is None:
+                messages.error(request,'Usuario o contraseña incorrectos')
 
         return render(request,'app/login.html')
 
@@ -63,6 +64,58 @@ def list_user(request):
 
     else:
         return redirect('home')
+
+def list_user_id(request):
+    if request.user.is_authenticated:
+        if request.user.is_staff:
+            id = request.GET['select']
+            data = {
+                'select':id
+            }
+            filtro = 0
+            for val in data.keys():
+                if data[val] == '1':
+                    filtro = 1
+                    print("FILTRAR POR ID")
+                if data[val] == '2':
+                    filtro = 2
+                    print("FILTRAR POR RUT")
+                if data[val] == '0':
+                    filtro = 0
+
+            x = request.GET['input-filter']
+            if filtro == 1:
+                if len(x)==0:
+                    x=0
+                usuarios=CustomUser.objects.filter(id=x)
+
+                data= {
+                    'usuarios':usuarios
+                }
+                return render(request,'app/list-user.html',data)
+            else:
+                if filtro == 2:
+                    usuarios=CustomUser.objects.filter(username=x)
+
+                    data= {
+                        'usuarios':usuarios
+                    }
+                    return render(request,'app/list-user.html',data)
+                else:
+
+                    if filtro == 0:
+                        usuarios=CustomUser.objects.filter(is_staff=0)
+
+                        data= {
+                            'usuarios':usuarios
+                        }
+                        return render(request,'app/list-user.html',data)
+
+                    else:
+                        return redirect('home')
+
+        return redirect('home')                
+
 
 def modify_user(request,id):
     usuario=get_object_or_404(CustomUser,id=id)
