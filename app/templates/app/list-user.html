@@ -23,7 +23,6 @@
                 <th scope="col ">APELLIDO</th>
                 <th scope="col ">CORREO</th>
                 <th scope="col ">TELÉFONO</th>
-                <th scope="col ">CONTRASEÑA</th>
                 <th scope="col ">COMUNA</th>
                 <th scope="col "></th>
                 <th scope="col "></th>
@@ -38,7 +37,6 @@
                 <td>{{u.last_name}}</td>
                 <td>{{u.email}}</td>
                 <td>{{u.phone}}</td>
-                <td>{{u.password}}</td>
                 <td>{{u.commune}}</td>
                 <td><a href="{% url 'modify-user' u.id %} " class="btn btn-primary ">MODIFICAR</a></td>
                 <td><a href="{% url 'delete-user' u.id %} " class="btn btn-danger ">ELIMINAR</a></td>

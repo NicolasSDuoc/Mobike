@@ -76,3 +76,5 @@ class CustomUserCreationForm(UserCreationForm):
                 }
             ),
         }
+    class media:
+        js = ('./static/app/custom.js')

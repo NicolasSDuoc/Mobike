@@ -38,3 +38,7 @@ $(document).ready(function() {
     }
     );
   });
+
+function msg(){
+    alert("xd");
+}
