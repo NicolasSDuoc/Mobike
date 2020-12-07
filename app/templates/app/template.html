@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,7 +14,7 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body>
+<body onload="initMap()" >
     <nav class="navbar sticky-top navbar-dark bg-secondary navbar-expand-lg">
         <a class="navbar-brand" style="color: white;" href="{% url 'home'%}">
             Mobike
@@ -48,6 +47,9 @@
                     <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
                 </li>
                 {% endif %}
+                <li>
+                    <a class="nav-link" href="{% url 'geolocator' %}" >Bici Mobike</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -78,5 +80,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 <script src="{% static 'app/js/formvalidation.js' %}"></script>
+<script src="{% static 'app/js/geoValidation.js' %}"></script>
 
 </html>

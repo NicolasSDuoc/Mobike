@@ -137,3 +137,11 @@ def delete_user(request,id):
     usuario=get_object_or_404(CustomUser,id=id)
     usuario.delete()
     return redirect("list-user")
+
+def geolocator(request):
+    return render(request,'app/map.html')
+
+def bicycle(request,id):
+    if request.method=='GET':
+        print(id)
+    return render(request,'app/bicycle.html')
