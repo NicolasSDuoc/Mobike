@@ -1,17 +1,6 @@
 const locations = [
     { lat: -33.441846, lng: -70.543656 },
     { lat: -33.443908, lng: -70.547427 },
-    { lat: -33.441539, lng: -70.562217 },
-    { lat: -33.446522, lng: -70.563894 },
-    { lat: -33.452564, lng: -70.528735 },
-    { lat: -33.427082, lng: -70.616987 },
-    { lat: -33.430677, lng: -70.623567 },
-    { lat: -33.438215, lng: -70.607535 },
-    { lat: -33.435869, lng: -70.593358 },
-    { lat: -33.462222, lng: -70.610673 },
-    { lat: -33.456644, lng: -70.593217 },
-    { lat: -33.465243, lng: -70.589107 },
-    { lat: -33.453813, lng: -70.621725 },
 ];
 
 
@@ -37,12 +26,14 @@ function initMap() {
 
         google.maps.event.addListener(marcador, 'click', (function(marcador, i) {
             return function() {
-                const info = "VER ESTACIONAMIENTOS";
+                const url = "{% url 'bicycle' %}"
+                const info = "<a href='/bicycle/ " + i + "'" + "class='btn btn-primary'" + " >" + "Ver bicicletas" + "</a>";
                 // establece el contenido de la ventana informativa
                 ventanaInfo.setContent(info),
                     //abre la ventana informativa
                     ventanaInfo.open(map, marcador);
             }
         })(marcador, i));
+
     }
 }

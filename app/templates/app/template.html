@@ -32,24 +32,24 @@
                     <a class="nav-link" href="{% url 'list-user' %}">Listar Usuarios</a>
                 </li>
                 {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+                <li>
+                    <a class="nav-link" href="{% url 'geolocator' %}" >Mapa Mobike</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li>
-                    <a class="nav-link" href="admin/">{{user.username}}</a>
+                    <a class="nav-link" href="{% url 'perfil' %}">{{user.username}}</a>
                 </li>
                 <li>
                     <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
                 </li>
                 {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+                </li>
                 <li>
                     <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
                 </li>
                 {% endif %}
-                <li>
-                    <a class="nav-link" href="{% url 'geolocator' %}" >Bici Mobike</a>
-                </li>
             </ul>
         </div>
     </nav>

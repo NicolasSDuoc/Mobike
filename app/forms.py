@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import fields
+from django.forms import fields,ModelForm
 from django.forms import widgets
-from .models import CustomUser
+from .models import CustomUser,Credit_card
 
 class CustomUserCreationForm(UserCreationForm):
 
@@ -78,3 +78,67 @@ class CustomUserCreationForm(UserCreationForm):
         }
     class media:
         js = ('./static/app/custom.js')
+
+
+
+class CustomUserUpdateCreationForm(ModelForm):
+
+    class Meta:
+        model = CustomUser
+        fields = ['username','first_name','last_name','email','phone','commune']
+        widgets = {
+            'username': forms.TextInput(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su rut',
+                    'id': 'username',
+                    'required': 'required',
+                }
+            ),
+            'first_name': forms.TextInput( 
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su nombre',
+                    'id': 'first_name',
+                    'required': 'required',
+                }
+            ),
+            'last_name': forms.TextInput(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su apellido',
+                    'id': 'last_name',
+                    'required': 'required',
+                }
+            ),
+            'email': forms.TextInput(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su correo',
+                    'id': 'email',
+                    'required': 'required',
+                }
+            ),
+            'phone': forms.TextInput(
+                attrs = {
+                    'class': 'form-control',
+                    'placeholder': 'Ingrese su teléfono',
+                    'id': 'phone',
+                    'required': 'required',
+                }
+            ),
+            'commune': forms.Select(
+                attrs = {
+                    'class': 'form-control',
+                    'id': 'commune',
+                    'required': 'required',
+                }
+            ),
+        }
+
+
+class CreditCardUpdateForm(ModelForm):
+
+    class Meta:
+        model = Credit_card
+        fields = ['headline','number','month','year','cvv']

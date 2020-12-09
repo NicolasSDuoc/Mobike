@@ -1,0 +1,58 @@
+{% extends "app/template.html" %} {% load static %} {% block title %}Arrendar bicicleta{% endblock %} {% block content %}
+
+<script src="{% static 'app/js/crono.js' %}"></script>
+<div id="ocultar" style=" text-align: center;">
+<form style="width: 50%; background-color: gray; margin-left: auto; margin-right: auto;" >
+    <div style="margin: 2%"><p style="font-size: 22px;">Seleccione un punto disponible al que se dirige</p></div>
+    {% for park in parking%}
+    <div><select class="custom-select" name="select-park" style="margin: 2%; width: 70%;">
+        <option value="{{park.cod}}">{{park.address}}</option> 
+    </select><a class="btn btn-success" href="#" onclick="init()">Iniciar ruta</a></div>
+    
+    {% endfor %}
+</form>
+</div>
+
+        <script>
+
+     var cronos;
+     var tiempo;
+
+      function init() {
+        cronos = setInterval(function() { timer() }, 1000);
+        document.getElementById("ocultar").style.display="none";
+      }
+
+      function timer() {
+        tiempo = parseInt(document.getElementById('time').value);
+        document.getElementById('time').value = eval(tiempo + 1);
+      }
+
+      function reset() {
+        tiempo = parseInt(document.getElementById('time').value);
+        document.getElementById('time').value = "0";
+      }
+
+      function stop() {
+        document.getElementById("ocultar").style.display="block";
+        var precio=100
+        var time=document.getElementById("time").value;
+        document.getElementById('resultado').innerHTML = "$"+precio*time;
+        clearInterval(cronos);
+      }
+
+    </script>
+
+  </head>
+
+    <div style="width: 40%; padding: 2%; margin-left: auto; margin-right: auto;">
+      <!---<input type="button" value="Reiniciar" onclick="reset()" />-->
+      <input type="button" value="Terminar viaje" onclick="stop()" />
+      <input id="time" name="time" value="0" />
+  </div>
+  <div style="width: 16%; padding: 2%; margin-left: auto; margin-right: auto;">
+    <div><h4 >Total:</h4><h4 id="resultado"></h4></div>
+    <button class="btn btn-primary" style="margin: 2%">Pagar</button>
+  </div>
+
+{% endblock %}

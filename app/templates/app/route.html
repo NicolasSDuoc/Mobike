@@ -1,0 +1,56 @@
+{% extends "app/template.html" %} {% load static %} {% block title %}Viaje mobike{% endblock %} {% block content %}
+
+<script src="{% static 'app/js/crono.js' %}"></script>
+<div class="cronometro" onload="msg()">
+    <div id="hms"></div>
+    <div class="boton start"></div>        
+    <div class="boton stop"></div>
+    <div class="boton reiniciar"></div>
+</div>
+
+
+<html>
+
+  <head>
+    <title>Cronómetro</title>
+    <meta charset="utf-8">
+
+    <script>
+
+     var cronos;
+     var tiempo;
+
+      function init() {
+        cronos = setInterval(function() { timer() }, 1000);
+      }
+
+      function timer() {
+        tiempo = parseInt(document.getElementById('time').value);
+        document.getElementById('time').value = eval(tiempo + 1);
+      }
+
+      function reset() {
+        tiempo = parseInt(document.getElementById('time').value);
+        document.getElementById('time').value = "0";
+      }
+
+      function stop() {
+        clearInterval(cronos);
+      }
+
+    </script>
+
+  </head>
+
+  <body>
+
+      <input type="button" value="Empezar" onclick="init()" />
+      <input type="button" value="Reiniciar" onclick="reset()" />
+      <input type="button" value="Parar" onclick="stop()" />
+      <input id="time" name="time" value="0" />
+
+  </body>
+
+</html>
+
+{% endblock %}

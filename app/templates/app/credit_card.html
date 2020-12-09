@@ -1,0 +1,20 @@
+{% extends "app/template.html" %} {% load static %} {% block title %}Registro de tarjeta de credito{% endblock %} {% block content %}
+
+<div class="card" style="padding-bottom: 10%;">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <h2>Editar Tarjeta de credito</h2>
+                <hr>
+                <form method="POST" action="/save_card">
+                    {% csrf_token %}
+                    <div class="form-control-lg">Titular de tarjeta<input type="text" name="headline" maxlength="50" required></div>
+                    <div class="form-control-lg">Número de tarjeta<input type="text" name="number" maxlength="16" required></div>
+                    <div class="form-control-lg">Mes<input type="text" name="month" maxlength="2" required ></div>
+                    <div class="form-control-lg">Año<input type="text" name="year" maxlength="2" required></div>
+                    <div class="form-control-lg">CVV<input type="password" name="cvv" maxlength="3" required></div>
+                    <input type="text" value="{{username}}" hidden="true" name="username">
+                    <button class="btn btn-primary" type="submit" >Registrar</button>
+                </form>
+
+{% endblock %}

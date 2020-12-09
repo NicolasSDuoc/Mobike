@@ -1,9 +1,12 @@
 /*
  * Specific styles of signin component
  */
+
+
 /*
  * General styles
  */
+
 .form-contacto {
     border: 1px solid black;
     border-radius: 2%;
@@ -11,10 +14,9 @@
     padding: 20px;
     width: 500px;
     text-align: center;
- }
+}
 
-
- .form-contacto h4 {
+.form-contacto h4 {
     color: white;
 }
 
@@ -41,15 +43,16 @@
 .submit {
     width: 100px;
     height: 40px;
-    background: rgb(63,94,251);
-   background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(129,252,70,1) 100%);
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(129, 252, 70, 1) 100%);
 }
 
-label{
+label {
     color: red;
 }
 
- body, html {
+body,
+html {
     height: 100%;
     background-repeat: no-repeat;
     background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
@@ -69,9 +72,11 @@ label{
     cursor: default;
 }
 
+
 /*
  * Card component
  */
+
 .card {
     background-color: #F7F7F7;
     /* just in case there no content*/
@@ -97,9 +102,11 @@ label{
     border-radius: 50%;
 }
 
+
 /*
  * Form styles
  */
+
 .profile-name-card {
     font-size: 16px;
     font-weight: bold;
@@ -147,8 +154,8 @@ label{
 .form-signin .form-control:focus {
     border-color: rgb(104, 145, 162);
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
 }
 
 .btn.btn-signin {
@@ -181,20 +188,21 @@ label{
 
 .forgot-password:hover,
 .forgot-password:active,
-.forgot-password:focus{
+.forgot-password:focus {
     color: rgb(12, 97, 33);
 }
+
 .form {
     padding-bottom: 6rem;
     padding-top: 1rem;
 }
 
-.center_div{
+.center_div {
     margin: 0 auto;
-    width:80% /* value of your choice which suits your alignment */
+    width: 80%/* value of your choice which suits your alignment */
 }
 
 #map {
     height: 84%;
     width: 100%;
-  }
+}

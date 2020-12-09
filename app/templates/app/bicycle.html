@@ -1,4 +1,33 @@
 {% extends "app/template.html" %} {% load static %} {% block title %}Arrendar bicicleta{% endblock %} {% block content %}
 
 
+<form>
+    {% if park%}
+    <div><h3>Estacionamiento {{park}}</h3></div>
+    {% endif %}
+    {% if address%}
+    <div>{{address}}</div>
+    {% endif %}
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col ">Estado bicicleta</th>
+                <th scope="col ">Bicicletas</th>
+                <th scope="col ">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in bike %}
+            <tr>
+            {% if b.state == False%}
+                <td>Disponible</td>
+                {% endif %}
+                <td>{{b.cod}}</td>
+                <td><a class="btn btn-primary" href="{% url 'rent' b.cod park%}" >Arrendar</a</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+
 {% endblock %}
